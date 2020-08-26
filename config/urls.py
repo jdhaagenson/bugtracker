@@ -19,3 +19,14 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+# TODO home
+# TODO new ticket
+# TODO login
+# TODO edit post
+# TODO ticket details
+# TODO user details
+# TODO mark as done
+# TODO mark invalid
+# TODO assign to logged in and mark inprogress
+
