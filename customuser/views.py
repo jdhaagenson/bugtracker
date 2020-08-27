@@ -1,42 +1,29 @@
-from django.shortcuts import render
-from customuser.models import CustomUser
+from django.shortcuts import render, reverse, HttpResponseRedirect
+from .forms import LoginForm
+from django.contrib.auth import authenticate
 
 
-# Create your views here.
-# TODO homepage that shows all tickets, separated by ticket status
-#      statuses: New, In Progress, Done, Invalid
-def main(request):
-    return render(request, '', {})
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            authenticate(
+                username=data.get('username'),
+                password=data.get('password')
+            )
+            return HttpResponseRedirect(reverse('main'))
+    return render(request, 'form.html', {'form': form})
 
 
-# TODO filing and creating tickets
-def create_ticket(request):
-    return render(request, '', {})
-
-
-# TODO ticket detail page
-def ticket_details(request, ticket_id):
-    return render(request, '', {})
-
-
-# TODO edit tickets, limited to only title and description
-def edit_ticket(request, ticket_id):
-    return render(request, '', {})
-
-
-# TODO assign a ticket to currently logged in user, which changes status to in progress
-def assign_ticket(request, ticket_id):
+def logout(request):
     return
 
 
-# TODO mark ticket as invalid
-def invalidate(request, ticket_id):
-    return
-
-
-# TODO mark ticket as complete
-def complete(request, ticket_id):
-    return
+# TODO user detail page where you can see current tickets assigned to user,
+#      which tickets that user filed, and which tickets that user completed
+def user_details(request, user_id):
+    return render(request, '', {})
 
 
 
