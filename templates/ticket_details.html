@@ -13,10 +13,10 @@
         <h1>{{ ticket.title }}</h1>
         <h5>Status: {{ ticket.status }}</h5>
         <p>{{ ticket.description }}</p>
-        <p>Created by 👤{{ ticket.created_by }}</p>
-        <p>📅{{ ticket.time_created }}</p>
-        <p>Assigned to <a>👤{{ ticket.assigned_to }}</a></p>
-        <p>Completed by <a>👤{{ ticket.completed_by }}</a></p>
+        <h6>Created by 👤{{ ticket.created_by }}</h6>
+        <h6>📅{{ ticket.time_created }}</h6>
+        <h6>Assigned to <a>👤{{ ticket.assigned_to }}</a></h6>
+        <h6>Completed by <a>👤{{ ticket.completed_by }}</a></h6>
     </div>
     <div>
         <a href="/ticket/{{ ticket.id }}/edit/"><button>Edit Ticket</button></a>
