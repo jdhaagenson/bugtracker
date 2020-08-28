@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: grid;
+        }
+        
+        #title {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #invalid {
+            display: grid;
+            grid-column: 4;
+            grid-row: 3;
+        }
+        
+        #done {
+            display: grid;
+            grid-column: 3;
+            grid-row: 3;
+        }
+        
+        #new {
+            display: grid;
+            grid-column: 1;
+            grid-row: 3;
+        }
+        
+        #assigned {
+            display: grid;
+            grid-column: 2;
+            grid-row: 3;
+        }
+        
+        .status {
+            display: grid;
+            place-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>BugTracker</h1>
+        <h3 id="title">Tickets</h3>
+    </div>
+    <a href="/new/"><button>Create New Ticket</button></a>
+    <div id="container">
+        <div id="new" class='status'>
+            <h4>New Tickets</h4>
+            <div>
+                <a href="/assign/"><button>Claim</button></a>
+                <a href="/complete/"><button>Complete</button></a>
+                <a href="/invalidate/"><button>Invalidate</button></a>
+            </div>
+        </div>
+        <div id='assigned' class='status'>
+            <h4>Tickets In Progress</h4>
+            <div>
+                <a href="/complete/"><button>Complete</button></a>
+                <a href="/invalidate"><button>Invalidate</button></a>
+            </div>
+        </div>
+        <div id='done' class='status'>
+            <h4>Completed Tickets</h4>
+            <div>
+
+            </div>
+        </div>
+        <div id='invalid' class='status'>
+            <h4>Invalid Tickets</h4>
+            <div>
+                <a href="/ticket/"><button>View</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
