@@ -5,22 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <style>
+        .container {
+            display: grid;
+            place-items: center;
+        }
+        
+        .two {
+            display: grid;
+            grid-column: 2;
+        }
+        
+        .one {
+            display: grid;
+            grid-column: 1;
+        }
+        
+        .three {
+            display: grid;
+            grid-column: 3;
+        }
+        
+        h4 {
+            display: grid;
+            grid-row: 1;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <h1></h1>
-        <div>
-            Created Tickets
-
+    <h1>Name</h1>
+    <div class='container'>
+        <h4 class='one'>Created Tickets</h4>
+        <div class='one'>
+            Created
         </div>
-        <div>
+        <h4 class='two'>Assigned Tickets</h4>
+        <div class='two'>
             Assigned Tickets
-
         </div>
-        <div>
+        <h4 class='three'>Completed Tickets</h4>
+        <div class='three'>
             Completed Tickets
-
         </div>
     </div>
 </body>
