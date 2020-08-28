@@ -18,7 +18,9 @@ def main(request):
 
 # TODO filing and creating tickets
 def create_ticket(request):
-    return render(request, '', {})
+    if request.method == 'POST':
+        form =
+    return render(request, 'form.html', {'form': form})
 
 
 # TODO ticket detail page
