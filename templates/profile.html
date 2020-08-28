@@ -8,45 +8,48 @@
     <style>
         .container {
             display: grid;
-            place-items: center;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 10px;
         }
-        
-        .two {
+        .ticket {
             display: grid;
-            grid-column: 2;
+            border: 1px black solid;
+            margin-bottom: 2px;
+            padding: 5px;
         }
-        
-        .one {
+        .title {
             display: grid;
-            grid-column: 1;
-        }
-        
-        .three {
-            display: grid;
-            grid-column: 3;
-        }
-        
-        h4 {
-            display: grid;
-            grid-row: 1;
         }
     </style>
 </head>
 
 <body>
-    <h1>Name</h1>
+    <h1>{{ user.display_name }}</h1>
+    <a href="/"><button>Back to Home</button></a>
     <div class='container'>
-        <h4 class='one'>Created Tickets</h4>
-        <div class='one'>
-            Created
+        <div>
+            <h4 class='title'>Created Tickets</h4>
+            {% for ticket in created %}
+            <div class='ticket'>
+                {% include './partials/ticket.html' %}
+            </div>
+            {% endfor %}
         </div>
-        <h4 class='two'>Assigned Tickets</h4>
-        <div class='two'>
-            Assigned Tickets
+        <div>
+            <h4 class='title'>Assigned Tickets</h4>
+            {% for ticket in assigned %}
+            <div class='ticket'>
+                {% include './partials/ticket.html' %}
+            </div>
+            {% endfor %}
         </div>
-        <h4 class='three'>Completed Tickets</h4>
-        <div class='three'>
-            Completed Tickets
+        <div>
+            <h4 class='title'>Completed Tickets</h4>
+            {% for ticket in completed %}
+            <div class='ticket'>
+                {% include './partials/ticket.html' %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 </body>

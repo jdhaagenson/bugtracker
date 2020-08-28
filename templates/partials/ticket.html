@@ -1,13 +1,13 @@
 {% block generic_ticket %}
-<div>
+<div id="ticket">
     <div>
-        <h1>{{ ticket.title }}</h1>
         <h5>{{ ticket.status }}</h5>
+        <h3>{{ ticket.title }}</h3>
         <p>{{ ticket.description }}</p>
-        <p>👤{{ ticket.created_by }}</p>
-        <p>📅{{ ticket.time_created }}</p>
-        <p>Assigned to 👤{{ ticket.assigned_to }}</p>
-        <p>Completed by 👤{{ ticket.completed_by }}</p>
+        <h6>Created by <a href="/user/{{ ticket.created_by.id }}">👤{{ ticket.created_by }}</a></h6>
+        <h6>📅{{ ticket.time_created }}</h6>
+        <h6>Assigned to <a href="/user/{{ ticket.assigned_to.id }}">👤{{ ticket.assigned_to }}</a></h6>
+        <h6>Completed by <a href="/user/{{ ticket.completed_by.id }}">👤{{ ticket.completed_by }}</a></h6>
     </div>
     <a href="/ticket/{{ ticket.id }}/"><button>View</button></a>
 </div>

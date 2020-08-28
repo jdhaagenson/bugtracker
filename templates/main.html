@@ -4,46 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BugTracker | Home</title>
     <style>
         #container {
             display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: 10px;
+            place-items: baseline;
         }
-        
-        #title {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-        
-        #invalid {
+        div {
             display: grid;
-            grid-column: 4;
-            grid-row: 3;
         }
-        
-        #done {
+        #ticket {
             display: grid;
-            grid-column: 3;
-            grid-row: 3;
+            border: 1px black solid;
+            box-shadow: 10px black;
+            margin-bottom: 10px;
+            padding: 10px;
         }
-        
-        #new {
-            display: grid;
-            grid-column: 1;
-            grid-row: 3;
-        }
-        
-        #assigned {
-            display: grid;
-            grid-column: 2;
-            grid-row: 3;
-        }
-        
         .status {
             display: grid;
-            place-items: center;
+            border: 1px grey dotted;
+            margin-bottom: 5px;
+            padding: 10px;
         }
+        h6 {
+            margin: 0px;
+            padding: 2px;
+        }
+        h5 {
+            margin: 0px;
+            color: forestgreen;
+        }
+        button {
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 
@@ -55,7 +51,7 @@
     <a href="/new/"><button>Create New Ticket</button></a>
     <div id="container">
         <div id="new" class='status'>
-            <h4>New Tickets</h4>
+            <h2>New Tickets</h2>
             {% for ticket in new %}
                 <div>
                     {% include "./partials/ticket.html" %}
@@ -63,7 +59,7 @@
             {% endfor %}
         </div>
         <div id='assigned' class='status'>
-            <h4>Tickets In Progress</h4>
+            <h2>Tickets In Progress</h2>
             {% for ticket in in_progress %}
                 <div>
                     {% include './partials/ticket.html' %}
@@ -71,7 +67,7 @@
             {% endfor %}
         </div>
         <div id='done' class='status'>
-            <h4>Completed Tickets</h4>
+            <h2>Completed Tickets</h2>
             {% for ticket in done %}
                 <div>
                     {% include './partials/ticket.html' %}
@@ -79,7 +75,7 @@
             {% endfor %}
         </div>
         <div id='invalid' class='status'>
-            <h4>Invalid Tickets</h4>
+            <h2>Invalid Tickets</h2>
             {% for ticket in invalid %}
                 <div>
                     {% include './partials/ticket.html' %}

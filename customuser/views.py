@@ -1,30 +1,43 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import LoginForm
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate, logout, login
+from customuser.models import CustomUser
+from bugtrack.models import Ticket
+from django.contrib.auth.decorators import login_required
 
 
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        # breakpoint()
         if form.is_valid():
             data = form.cleaned_data
-            authenticate(
+            user = authenticate(
+                request,
                 username=data.get('username'),
                 password=data.get('password')
             )
-            return HttpResponseRedirect(reverse('main'))
-    return render(request, 'form.html', {'form': form})
+            if user:
+                login(request, user)
+                return HttpResponseRedirect(
+                    request.GET.get('next', reverse('main')))
+    form = LoginForm()
+    return render(request, 'form.html', {'form': form, 'page': 'Login to BugTracker🐞'})
 
 
 def logout_user(request):
-    logout(request.user)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    logout(request)
+    return HttpResponseRedirect(reverse('main'))
 
 
-# TODO user detail page where you can see current tickets assigned to user,
-#      which tickets that user filed, and which tickets that user completed
-def user_details(request, user_id):
-    return render(request, '', {})
+@login_required
+def user_details(request, userid):
+    user = CustomUser.objects.get(id=userid)
+    assigned = Ticket.objects.filter(assigned_to=user)
+    completed = Ticket.objects.filter(completed_by=user)
+    created = Ticket.objects.filter(created_by=user)
+    return render(request, 'profile.html',
+                  {'user': user, 'assigned': assigned, 'completed': completed, 'created': created})
 
 
 
