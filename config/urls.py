@@ -29,4 +29,5 @@ urlpatterns = [
     path('ticket/<int:ticket_id>/complete/', complete, name='complete'),
     path('ticket/<int:ticket_id>/assign/', assign, name='assign'),
     path('ticket/<int:ticket_id>', ticket_details, name='ticket_details'),
-    path('user/<int:userid>', user_details, name='user_details'),
+    path('user/<int:userid>', user_details, name='user_details')
+]

@@ -56,30 +56,35 @@
     <div id="container">
         <div id="new" class='status'>
             <h4>New Tickets</h4>
-            <div>
-                <a href="/assign/"><button>Claim</button></a>
-                <a href="/complete/"><button>Complete</button></a>
-                <a href="/invalidate/"><button>Invalidate</button></a>
-            </div>
+            {% for ticket in new %}
+                <div>
+                    {% include "./partials/ticket.html" %}
+                </div>
+            {% endfor %}
         </div>
         <div id='assigned' class='status'>
             <h4>Tickets In Progress</h4>
-            <div>
-                <a href="/complete/"><button>Complete</button></a>
-                <a href="/invalidate"><button>Invalidate</button></a>
-            </div>
+            {% for ticket in in_progress %}
+                <div>
+                    {% include './partials/ticket.html' %}
+                </div>
+            {% endfor %}
         </div>
         <div id='done' class='status'>
             <h4>Completed Tickets</h4>
-            <div>
-
-            </div>
+            {% for ticket in done %}
+                <div>
+                    {% include './partials/ticket.html' %}
+                </div>
+            {% endfor %}
         </div>
         <div id='invalid' class='status'>
             <h4>Invalid Tickets</h4>
-            <div>
-                <a href="/ticket/"><button>View</button></a>
-            </div>
+            {% for ticket in invalid %}
+                <div>
+                    {% include './partials/ticket.html' %}
+                </div>
+            {% endfor %}
         </div>
     </div>
 </body>

@@ -5,13 +5,20 @@ from django.utils import timezone
 
 
 class Ticket(models.Model):
-    STATUS_OPTIONS = [
-        'New', 'In Progress', 'Invalid', 'Done'
+    NEW = 'New'
+    ASSIGNED = 'In Progress'
+    INVALID = 'Invalid'
+    COMPLETE = 'Done'
+    STATUS_CHOICES = [
+        (NEW, 'New'),
+        (ASSIGNED, 'In Progress'),
+        (INVALID, 'Invalid'),
+        (COMPLETE, 'Done')
     ]
     title = models.CharField(max_length=150)
     time_created = models.DateTimeField(default=timezone.now)
     description = models.CharField(max_length=250)
-    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    status = models.CharField(max_length=11, choices=STATUS_OPTIONS, default='New')
-    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None, null=True)
-    completed_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None, null=True)
+    created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='created_by')
+    status = models.CharField(max_length=11, choices=STATUS_CHOICES, default=NEW)
+    assigned_to = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None, null=True, related_name='assigned_to')
+    completed_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None, null=True, related_name='completed_by')
