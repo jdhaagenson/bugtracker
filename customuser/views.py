@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import LoginForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 
 
 def login_view(request):
@@ -16,8 +16,9 @@ def login_view(request):
     return render(request, 'form.html', {'form': form})
 
 
-def logout(request):
-    return
+def logout_user(request):
+    logout(request.user)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 # TODO user detail page where you can see current tickets assigned to user,
