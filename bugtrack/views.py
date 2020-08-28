@@ -25,7 +25,7 @@ def edit_ticket(request, ticket_id):
 
 
 # TODO assign a ticket to currently logged in user, which changes status to in progress
-def assign_ticket(request, ticket_id):
+def assign(request, ticket_id):
     return
 
 
