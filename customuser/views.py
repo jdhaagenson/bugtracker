@@ -11,12 +11,14 @@ def login_view(request):
         form = LoginForm(request.POST)
         # breakpoint()
         if form.is_valid():
-            data = form.cleaned_data
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
             user = authenticate(
                 request,
-                username=data.get('username'),
-                password=data.get('password')
+                username=username,
+                password=password
             )
+            # breakpoint()
             if user:
                 login(request, user)
                 return HttpResponseRedirect(

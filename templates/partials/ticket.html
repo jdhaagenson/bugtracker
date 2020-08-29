@@ -6,8 +6,16 @@
         <p>{{ ticket.description }}</p>
         <h6>Created by <a href="/user/{{ ticket.created_by.id }}">👤{{ ticket.created_by }}</a></h6>
         <h6>📅{{ ticket.time_created }}</h6>
-        <h6>Assigned to <a href="/user/{{ ticket.assigned_to.id }}">👤{{ ticket.assigned_to }}</a></h6>
-        <h6>Completed by <a href="/user/{{ ticket.completed_by.id }}">👤{{ ticket.completed_by }}</a></h6>
+        {% if ticket.assigned_to is not None %}
+            <h6>Assigned to <a href="/user/{{ ticket.assigned_to.id }}">👤{{ ticket.assigned_to }}</a></h6>
+        {% else %}
+            <h6>🖋No one assigned</h6>
+        {% endif %}
+        {% if ticket.completed_by is not None %}
+            <h6>Completed by <a href="/user/{{ ticket.completed_by.id }}">👤{{ ticket.completed_by }}</a></h6>
+        {% else %}
+            <h6>❌Incomplete</h6>
+        {% endif %}
     </div>
     <a href="/ticket/{{ ticket.id }}/"><button>View</button></a>
 </div>

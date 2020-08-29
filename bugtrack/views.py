@@ -51,7 +51,7 @@ def edit_ticket(request, ticket_id):
             ticket.title = data.get('title')
             ticket.description = data.get('description')
             ticket.save()
-            return HttpResponseRedirect(reverse('ticket_details'))
+            return HttpResponseRedirect(reverse('main'))
     data = {'title': ticket.title, 'description': ticket.description}
     form = NewTicketForm(initial=data)
     return render(request, 'form.html', {'form': form, 'page': 'Edit Ticket'})

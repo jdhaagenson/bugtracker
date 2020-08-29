@@ -39,16 +39,20 @@
         button {
             margin-top: 10px;
         }
+        header {
+            display: flex;
+            flex-direction: row;
+        }
 
     </style>
 </head>
 
 <body>
+    <header>{% include './partials/header.html' %}</header>
     <div>
-        <h1>BugTracker</h1>
+        <h1>BugTracker🐞</h1>
         <h3 id="title">Tickets</h3>
     </div>
-    <a href="/new/"><button>Create New Ticket</button></a>
     <div id="container">
         <div id="new" class='status'>
             <h2>New Tickets</h2>
