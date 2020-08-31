@@ -52,7 +52,19 @@
             flex-direction: row;
             background-color: #222222;
         }
-
+        .head {
+            display: flex;
+            flex-direction: row;
+            background-color: #222222;
+            color: white;
+            font-family: "Victor Mono";
+            font-style: italic;
+            font-weight: lighter;
+            text-decoration: none;
+            padding: 10px 20px 10px 20px;
+            border-right: 1px solid #111111;
+            margin: 10px 0px 10px 0px;
+        }
     </style>
 </head>
 
@@ -60,7 +72,7 @@
     <header>{% include './partials/header.html' %}</header>
     <div>
         <h1>BugTracker🐞</h1>
-        <h3 id="title">Tickets</h3>
+        <h3 id="title">All Tickets</h3>
     </div>
     <div id="container">
         <div id="new" class='status'>
